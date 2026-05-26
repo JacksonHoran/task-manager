@@ -18,7 +18,7 @@ function removeTask(index) {
 }
 
 function toggleTask(index) {
-  tasks.value.splice(index, 1);
+  tasks.value[index].checked = !tasks.value[index].checked;
 }
 </script>
 
@@ -35,69 +35,21 @@ function toggleTask(index) {
     <span class="w-20 max-w-2xl p-2.5 text-[20px] bg-blue-400 text-blue-950 transition-all duration-300 hover:bg-blue-200 cursor-pointer rounded" @click="newElement">Add</span>
   </div>
 
-  <ul id="myUL">
+  <ul class = "w-full">
     <li
       v-for="(task, index) in tasks"
       :key="index"
-      :class="{ checked: task.checked }"
       @click="toggleTask(index)"
+      :class="[
+        'relative cursor-pointer text-[18px] py-3 pr-12 pl-12 transition-all duration-200 select-none',
+        'bg-slate-800 even:bg-slate-700 hover:bg-slate-600 hover:text-black',
+        task.checked ? 'line-through before:content-[\'\'] before:absolute before:border-white before:border-solid before:border-r-2 before:border-b-2 before:top-3.5 before:left-5 before:rotate-45 before:h-3.75 before:w-1.75' : ''
+      ]"
     >
       {{ task.text }}
-      <span class="close" @click.stop="removeTask(index)">&#215;</span>
+      <span 
+    class="absolute right-0 top-0 p-3 hover:bg-slate-300 hover:text-black transition-colors duration-200"
+    @click.stop="removeTask(index)">&#215;</span>
     </li>
   </ul>
 </template>
-
-<style scoped>
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-ul li {
-  cursor: pointer;
-  position: relative;
-  background: var(--vt-c-text-dark-2);
-  font-size: 18px;
-  transition: 0.2s;
-}
-
-ul li:nth-child(odd) {
-  background: var(--vt-c-text-light-2);
-}
-
-ul li:hover {
-  background: #ddd;
-}
-
-ul li:checked {
-  background: #888;
-  color: #fff;
-  text-decoration: line-through;
-}
-
-ul li.checked::before {
-  content: "";
-  position: absolute;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 0 2px 2px 0;
-  top: 10px;
-  left: 16px;
-  transform: rotate(45deg);
-  height: 15px;
-  width: 7px;
-}
-
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 12px;
-}
-
-.close:hover {
-  background-color: var(--color-background-mute);
-  color: black;
-}
-</style>
