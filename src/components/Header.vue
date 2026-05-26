@@ -23,15 +23,16 @@ function toggleTask(index) {
 </script>
 
 <template>
-  <div id="myDiv" class="header">
-    <h1>Task Manager</h1>
+  <div class="bg-blue-950 p-[30px_40px] flex flex-col items-center justify-center gap-4 text-center">
+    <h1 class="text-4xl font-bold text-blue-300">Task Manager</h1>
     <input
+      class="w-full max-w-2xl p-2.5 text-[16px] text-black outline-none bg-blue-500 rounded"
       v-model="inputValue"
       type="text"
-      placeholder="Enter here..."
+      placeholder="Enter task here..."
       @keyup.enter="newElement"
     />
-    <span class="addBtm" @click="newElement">Add</span>
+    <span class="w-20 max-w-2xl p-2.5 text-[20px] bg-blue-400 text-blue-950 transition-all duration-300 hover:bg-blue-200 cursor-pointer rounded" @click="newElement">Add</span>
   </div>
 
   <ul id="myUL">
@@ -98,37 +99,5 @@ ul li.checked::before {
 .close:hover {
   background-color: var(--color-background-mute);
   color: black;
-}
-
-.header {
-  background-color: var(--vt-c-indigo);
-  padding: 30px 40px;
-  color: var(--vt-c-white);
-  text-align: center;
-}
-
-input {
-  margin: 0;
-  border: none;
-  border-radius: 0;
-  width: 75%;
-  padding: 10px;
-  float: left;
-  font-size: 16px;
-}
-.addBtn {
-    cursor: pointer;
-  padding: 10px;
-  width: 25%;
-  float: left;
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-  border-radius: 0;
-}
-
-.addBtn:hover {
-  background-color: #bbb;
 }
 </style>
