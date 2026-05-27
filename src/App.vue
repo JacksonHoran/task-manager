@@ -3,7 +3,7 @@ import TaskList from "./components/TaskList.vue";
 </script>
 
 <template>
-  <main class="">
+  <main class="min-h-screen bg-mist-900">
     <TaskList />
   </main>
 </template>

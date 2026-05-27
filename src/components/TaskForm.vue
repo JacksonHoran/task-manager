@@ -17,18 +17,17 @@ const handleSubmit = () => {
 <template>
   <form
     @submit.prevent="handleSubmit"
-    class="relative bg-slate-800 p-4 mx-auto flex rounded-xl items-center justify-center gap-4 text-center"
+    class="relative bg-mist-900 p-4 mx-auto flex rounded-xl items-center justify-center gap-4 text-center"
   >
     <input
       v-model="taskName"
       type="text"
-      class="relative z-10 pointer-events-auto w-full max-w-2xl p-2.5 text-[16px] text-blue-100 font-bold outline-none bg-blue-500 rounded placeholder:text-blue-950/60"
+      class="flex-1 h-12 px-4 text-[16px] text-white font-semibold placeholder:font-semibold placeholder:text-mist-300 outline-none bg-mist-700 rounded"
       placeholder="Add a new task..."
     />
     <button
       type="submit"
-      class="relative z-10 pointer-events-auto w-30 max-w-2xl p-2.5 text-[20px] bg-blue-400 text-blue-100 font-bold transition-all duration-300 hover:bg-blue-200 cursor-pointer rounded"
-    >
+      class="h-12 px-4 text-[16px] bg-mist-700 text-white font-bold hover:bg-mist-500 rounded"    >
       Add task
     </button>
   </form>
