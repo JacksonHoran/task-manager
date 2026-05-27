@@ -26,7 +26,7 @@ const remove = () => {
       @click.stop="remove"
       class="px-3 py-1 rounded bg-mist-900 text-white hover:bg-mist-700"
     >
-      Remove
+      X
     </button>
   </div>
 </template>
