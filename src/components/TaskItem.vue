@@ -12,10 +12,20 @@ const remove = () => {
 <template>
   <div
     class="flex items-center justify-between px-4 py-3 rounded cursor-pointer transition-all bg-mist-700 text-white hover:bg-mist-500">
-    <p class="truncate max-w-full font-semibold">{{ task.name }}</p>
+    <div class="flex items-center gap-3">
+      <input
+        type="checkbox"
+        class="relative peer h-5 w-5 shrink-0 transition-all cursor-pointer appearance-none rounded shadow hover:shadow-md bg-mist-400 checked:bg-mist-900 checked:before:content-['&#x2714'] checked:before:absolute checked:before:inset-0 checked:before:flex checked:before:items-center checked:before:justify-center checked:before:text-white checked:before:text-sm"
+      />
+      <label
+        class="peer-checked:line-through peer-checked:text-mist-400 max-w-full font-semibold"
+        >{{ task.name }}</label
+      >
+    </div>
     <button
       @click.stop="remove"
-      class="px-3 py-1 rounded bg-mist-900 text-white hover:bg-mist-700">
+      class="px-3 py-1 rounded bg-mist-900 text-white hover:bg-mist-700"
+    >
       Remove
     </button>
   </div>
