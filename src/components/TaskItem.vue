@@ -22,11 +22,18 @@ const remove = () => {
         >{{ task.name }}</label
       >
     </div>
+    <div class="flex items-center gap-3">
     <button
-      @click.stop="remove"
+        @click="editTask" 
+      class="px-3 py-1 rounded bg-mist-900 text-white hover:bg-mist-700">
+    Edit
+    </button>
+    <button
+      @click="remove"
       class="px-3 py-1 rounded bg-mist-900 text-white hover:bg-mist-700"
     >
       X
     </button>
+    </div>
   </div>
 </template>
