@@ -1,13 +1,11 @@
-<template >
-  <div>
-    <Header />
-  </div>
-</template>
-
 <script setup>
-import Header from './components/Header.vue'
+import TaskList from "./components/TaskList.vue";
 </script>
 
-<style scoped>
+<template>
+  <main class="">
+    <TaskList />
+  </main>
+</template>
 
-</style>
+<style scoped></style>
