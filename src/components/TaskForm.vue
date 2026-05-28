@@ -2,6 +2,8 @@
 import { ref } from "vue";
 
 const taskName = ref("");
+const taskDueDate = ref("");
+const taskPriority = ref("");
 const emit = defineEmits(["task-added"]);
 
 const handleSubmit = () => {
@@ -9,8 +11,14 @@ const handleSubmit = () => {
     alert("Error: Invalid input provided!");
     return;
   }
-  emit("task-added", taskName.value);
+  emit("task-added", {
+    name: taskName.value,
+    dueDate: taskDueDate.value,
+    priority: taskPriority.value,
+  });
   taskName.value = "";
+  taskDueDate.value = "";
+  taskPriority.value = "";
 };
 </script>
 
@@ -23,16 +31,14 @@ const handleSubmit = () => {
       type="text"
       class="w-150 flex-none h-12 px-4 text-[16px] text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded"
       placeholder="Title" />
-      <input
+    <input
       v-model="taskDueDate"
       type="date"
-      class="w-39 flex-inital h-12 px-4 text[16px] text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded"/>
-      <input
+      class="w-39 flex-initial h-12 px-4 text-[16px] text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded" />
+    <input
       v-model="taskPriority"
-      type="numer"
-      min="1"
-      max="10"
-      class="w-34 flex-initial h-12 px-4 text[16px] text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded"
+      type="text"
+      class="w-34 flex-initial h-12 px-4 text-[16px] text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded"
       placeholder="Priority (1-10)" />
     <button
       type="submit"

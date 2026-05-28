@@ -8,27 +8,38 @@ const tasksArr = ref([]);
 const currentTask = ref(null);
 
 onMounted(() => {
-    const savedTasks = localStorage.getItem("tasks");
-    if (savedTasks) {
-      tasksArr.value = JSON.parse(savedTasks);
-    }
+  const savedTasks = localStorage.getItem("tasks");
+  if (savedTasks) {
+    tasksArr.value = JSON.parse(savedTasks);
+  }
 });
 
-watch(tasksArr, (newTasks) => {
-  localStorage.setItem("tasks", JSON.stringify(newTasks));
-}, {deep: true});
+watch(
+  tasksArr,
+  (newTasks) => {
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+  },
+  { deep: true },
+);
 
-const addNewTask = (taskName) => {
+const addNewTask = (taskData) => {
   tasksArr.value.push({
     id: Date.now(),
-    name: taskName,
+    name: taskData.name,
+    dueDate: taskData.dueDate,
+    priority: taskData.priority,
     isChecked: false,
   });
 };
 
-const updateTask = (id, newName) => {
+const updateTask = (id, newName, newDueDate, newPriority) => {
   let index = tasksArr.value.findIndex((t) => t.id === id);
-  if (index !== -1) tasksArr.value[index].name = newName;
+  if (index !== -1) {
+    let task = tasksArr.value[index];
+    task.name = newName;
+    task.dueDate = newDueDate;
+    task.priority = newPriority;
+  }
   currentTask.value = null;
 };
 
@@ -67,7 +78,6 @@ const markTaskComplete = (id) => {
           @task-remove="removeTask" />
       </template>
     </div>
-
     <div
       v-else
       class="mt-12 flex flex-col items-center justify-center text-center p-8 rounded-xl">
