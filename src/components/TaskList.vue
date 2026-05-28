@@ -32,21 +32,23 @@ const startEdit = (id) => {
 
 <template>
   <div>
-    <TaskEditForm
-      v-if="currentTask"
-      :task="currentTask"
-      @task-changed="updateTask"
-      @cancel="currentTask = null" />
-
     <TaskForm @task-added="addNewTask" />
 
     <div v-if="tasksArr.length > 0" class="mt-6 grid gap-3">
-      <TaskItem
-        v-for="task in tasksArr"
-        :key="task.id"
-        :task="task"
-        @edit-task="startEdit"
-        @task-remove="removeTask" />
+      <template v-for="task in tasksArr" :key="task.id">
+        <TaskEditForm
+          v-if="currentTask && currentTask.id === task.id"
+          :task="currentTask"
+          @task-changed="updateTask"
+          @cancel="currentTask = null"
+        />
+        <TaskItem
+          v-else
+          :task="task"
+          @edit-task="startEdit"
+          @task-remove="removeTask"
+        />
+      </template>
     </div>
 
     <div
