@@ -44,8 +44,7 @@ const updateTask = (id, newName, newDueDate, newPriority) => {
 };
 
 const removeTask = (id) => {
-  let index = tasksArr.value.findIndex((t) => t.id === id);
-  if (index !== -1) tasksArr.value.splice(index, 1);
+  tasksArr.value = tasksArr.value.filter((t) => t.id === id);
 };
 
 const startEdit = (id) => {
@@ -53,10 +52,8 @@ const startEdit = (id) => {
 };
 
 const markTaskComplete = (id) => {
-  let index = tasksArr.value.findIndex((t) => t.id === id);
-  if (index !== -1) {
-    tasksArr.value[index].isChecked = !tasksArr.value[index].isChecked;
-  }
+  let task = tasksArr.value.find((t) => t.id === id);
+  if (task) task.isChecked = !task.isChecked;
 };
 </script>
 

@@ -24,11 +24,9 @@ const handleSave = () => {
     draftTaskDueDate.value,
     draftTaskPriority.value,
   );
-  draftTaskName.value = "";
 };
 
 const handleCancel = () => {
-  draftTaskName.value = "";
   emit("cancel");
 };
 </script>
