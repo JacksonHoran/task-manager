@@ -21,12 +21,23 @@ const handleSubmit = () => {
     <input
       v-model="taskName"
       type="text"
-      class="flex-1 h-12 px-4 text-[16px] text-white font-semibold placeholder:font-semibold placeholder:text-mist-300 outline-none bg-mist-700 rounded"
-      placeholder="Add a new task..." />
+      class="w-150 flex-none h-12 px-4 text-[16px] text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded"
+      placeholder="Title" />
+      <input
+      v-model="taskDueDate"
+      type="date"
+      class="w-39 flex-inital h-12 px-4 text[16px] text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded"/>
+      <input
+      v-model="taskPriority"
+      type="numer"
+      min="1"
+      max="10"
+      class="w-34 flex-initial h-12 px-4 text[16px] text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded"
+      placeholder="Priority (1-10)" />
     <button
       type="submit"
       class="h-12 px-4 text-[16px] bg-mist-700 text-white font-bold hover:bg-mist-500 rounded">
-      Add task
+      Add
     </button>
   </form>
 </template>
