@@ -11,6 +11,7 @@ const addNewTask = (taskName) => {
   tasksArr.value.push({
     id: Date.now(),
     name: taskName,
+    isChecked: false,
   });
 };
 
@@ -28,12 +29,18 @@ const removeTask = (id) => {
 const startEdit = (id) => {
   currentTask.value = tasksArr.value.find((t) => t.id === id);
 };
+
+const markTaskComplete = (id) => {
+  let index = tasksArr.value.findIndex((t) => t.id === id);
+  if (index !== -1) {
+    tasksArr.value[index].isChecked = !tasksArr.value[index].isChecked;
+  }
+};
 </script>
 
 <template>
   <div>
     <TaskForm @task-added="addNewTask" />
-
     <div v-if="tasksArr.length > 0" class="mt-1 mx-4 grid gap-3">
       <template v-for="task in tasksArr" :key="task.id">
         <TaskEditForm
@@ -44,6 +51,7 @@ const startEdit = (id) => {
         <TaskItem
           v-else
           :task="task"
+          @task-complete="markTaskComplete"
           @edit-task="startEdit"
           @task-remove="removeTask" />
       </template>
