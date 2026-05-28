@@ -15,13 +15,13 @@ const addNewTask = (taskName) => {
 };
 
 const updateTask = (id, newName) => {
-  const index = tasksArr.value.findIndex((t) => t.id === id);
+  let index = tasksArr.value.findIndex((t) => t.id === id);
   if (index !== -1) tasksArr.value[index].name = newName;
   currentTask.value = null;
 };
 
 const removeTask = (id) => {
-  const index = tasksArr.value.findIndex((t) => t.id === id);
+  let index = tasksArr.value.findIndex((t) => t.id === id);
   if (index !== -1) tasksArr.value.splice(index, 1);
 };
 
@@ -40,14 +40,12 @@ const startEdit = (id) => {
           v-if="currentTask && currentTask.id === task.id"
           :task="currentTask"
           @task-changed="updateTask"
-          @cancel="currentTask = null"
-        />
+          @cancel="currentTask = null" />
         <TaskItem
           v-else
           :task="task"
           @edit-task="startEdit"
-          @task-remove="removeTask"
-        />
+          @task-remove="removeTask" />
       </template>
     </div>
 
