@@ -4,29 +4,29 @@ import TaskForm from "./TaskForm.vue";
 import TaskItem from "./TaskItem.vue";
 import TaskEditForm from "./TaskEditForm.vue";
 
-const tasks = ref([]);
+const tasksArr = ref([]);
 const currentTask = ref(null);
 
 const addNewTask = (taskName) => {
-  tasks.value.push({
+  tasksArr.value.push({
     id: Date.now(),
     name: taskName,
   });
 };
 
 const updateTask = (id, newName) => {
-  const index = tasks.value.findIndex((t) => t.id === id);
-  if (index !== -1) tasks.value[index].name = newName;
+  const index = tasksArr.value.findIndex((t) => t.id === id);
+  if (index !== -1) tasksArr.value[index].name = newName;
   currentTask.value = null;
 };
 
 const removeTask = (id) => {
-  const index = tasks.value.findIndex((t) => t.id === id);
-  if (index !== -1) tasks.value.splice(index, 1);
+  const index = tasksArr.value.findIndex((t) => t.id === id);
+  if (index !== -1) tasksArr.value.splice(index, 1);
 };
 
 const startEdit = (id) => {
-  currentTask.value = tasks.value.find((t) => t.id === id);
+  currentTask.value = tasksArr.value.find((t) => t.id === id);
 };
 </script>
 
@@ -40,9 +40,9 @@ const startEdit = (id) => {
 
     <TaskForm @task-added="addNewTask" />
 
-    <div v-if="tasks.length > 0" class="mt-6 grid gap-3">
+    <div v-if="tasksArr.length > 0" class="mt-6 grid gap-3">
       <TaskItem
-        v-for="task in tasks"
+        v-for="task in tasksArr"
         :key="task.id"
         :task="task"
         @edit-task="startEdit"
