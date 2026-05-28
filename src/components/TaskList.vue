@@ -1,11 +1,22 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, watch } from "vue";
 import TaskForm from "./TaskForm.vue";
 import TaskItem from "./TaskItem.vue";
 import TaskEditForm from "./TaskEditForm.vue";
 
 const tasksArr = ref([]);
 const currentTask = ref(null);
+
+onMounted(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    if (savedTasks) {
+      tasksArr.value = JSON.parse(savedTasks);
+    }
+});
+
+watch(tasksArr, (newTasks) => {
+  localStorage.setItem("tasks", JSON.stringify(newTasks));
+}, {deep: true});
 
 const addNewTask = (taskName) => {
   tasksArr.value.push({
