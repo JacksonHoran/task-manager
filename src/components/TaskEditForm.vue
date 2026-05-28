@@ -10,7 +10,7 @@ const emit = defineEmits(["task-changed", "cancel"]);
 
 const handleSave = () => {
   if (!draftTaskName.value.trim()) {
-    alert("Error: Invalid input provided!");
+    alert("Error: Editing a task cannot result in a blank name! Please delete the task instead.");
     return;
   }
   emit("task-changed", props.task.id, draftTaskName.value);
