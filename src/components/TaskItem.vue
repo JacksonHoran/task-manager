@@ -1,9 +1,13 @@
 <script setup>
 import { ref } from "vue";
-const props = defineProps({ task: Object });
+const props = defineProps({
+  task: Object,
+});
+const emit = defineEmits(["task-remove", "edit-task"]);
 
-const emit = defineEmits(["task-remove"]);
-
+const editTask = () => {
+    emit("edit-task", props.task.id)
+}
 const remove = () => {
   emit("task-remove", props.task.id);
 };
