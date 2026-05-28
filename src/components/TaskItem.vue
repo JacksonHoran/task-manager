@@ -15,7 +15,7 @@ const remove = () => {
 
 <template>
   <div
-    class="flex items-center justify-between px-4 py-3 rounded cursor-pointer transition-all bg-mist-700 text-white hover:bg-mist-500">
+    class="flex justify-between p-4 rounded cursor-pointer transition-all bg-mist-700 text-white hover:bg-mist-500">
     <div class="flex items-center gap-3">
       <input
         type="checkbox"

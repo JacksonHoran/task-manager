@@ -26,21 +26,21 @@ const handleCancel = () => {
 <template>
   <form
     @submit.prevent="handleSave"
-    class="bg-mist-700 p-4 mx-60 flex rounded-xl items-center gap-3">
+    class="bg-mist-700 p-4 flex rounded items-center gap-3">
     <input
       v-model="draftTaskName"
       type="text"
-      class="flex-1 h-12 px-4 text-[16px] text-white font-semibold placeholder:font-semibold placeholder:text-mist-300 outline-none bg-mist-900 rounded"
+      class="flex-1 pl-2 py-1 ml-6 text-[16px] text-white font-semibold placeholder:font-semibold placeholder:text-mist-300 outline-none bg-mist-900 rounded"
       placeholder="Edit task..." />
     <button
       type="submit"
-      class="h-12 px-4 text-[16px] bg-mist-900 text-white font-bold hover:bg-mist-500 rounded">
+      class="px-3 py-1 rounded bg-mist-900 text-white hover:bg-mist-700"">
       Save
     </button>
     <button
       type="button"
       @click="handleCancel"
-      class="h-12 px-4 text-[16px] bg-mist-900 text-white font-bold hover:bg-mist-500 rounded">
+      class="px-3 py-1 rounded bg-mist-900 text-white hover:bg-mist-700"">
       Cancel
     </button>
   </form>

@@ -34,7 +34,7 @@ const startEdit = (id) => {
   <div>
     <TaskForm @task-added="addNewTask" />
 
-    <div v-if="tasksArr.length > 0" class="mt-6 grid gap-3">
+    <div v-if="tasksArr.length > 0" class="mt-1 mx-4 grid gap-3">
       <template v-for="task in tasksArr" :key="task.id">
         <TaskEditForm
           v-if="currentTask && currentTask.id === task.id"
