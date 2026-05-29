@@ -4,7 +4,12 @@ const props = defineProps({
   tasks: Array,
 });
 
-const emit = defineEmits(["clear-completed", "clear-all", "select-all", "deselect-all"]);
+const emit = defineEmits([
+  "clear-completed",
+  "clear-all",
+  "select-all",
+  "deselect-all",
+]);
 
 const totalTasks = computed(() => props.tasks.length);
 const incompleteTasks = computed(
@@ -20,8 +25,8 @@ const selectAll = () => emit("select-all");
 
 const DeselectAll = () => emit("deselect-all");
 
-const allSelected = computed(() =>
-  props.tasks.length > 0 && props.tasks.every((task) => task.isChecked),
+const allSelected = computed(
+  () => props.tasks.length > 0 && props.tasks.every((task) => task.isChecked),
 );
 </script>
 

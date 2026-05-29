@@ -99,10 +99,10 @@ const markTaskComplete = (id) => {
       <span>
         <TaskSummary
           :tasks="tasksArr"
-          @clear-completed="tasksArr = tasksArr.filter(t => !t.isChecked)"
+          @clear-completed="tasksArr = tasksArr.filter((t) => !t.isChecked)"
           @clear-all="tasksArr = []"
-          @select-all="tasksArr.forEach(t => t.isChecked = true)"
-          @deselect-all="tasksArr.forEach(t => t.isChecked = false)" />
+          @select-all="tasksArr.forEach((t) => (t.isChecked = true))"
+          @deselect-all="tasksArr.forEach((t) => (t.isChecked = false))" />
       </span>
     </div>
     <div v-if="tasksArr.length > 0" class="mt-1 mx-4 grid gap-3">
