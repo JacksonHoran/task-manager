@@ -9,8 +9,9 @@ const sortOptions = [
 </script>
 
 <template>
-  <div class="mt-4 ml-4 bg-mist-900">
-    <div class="flex items-center gap-4 bg-mist-700 h-12 px-12 rounded">
+  <div class="bg-mist-900">
+    <div
+      class="flex flex-wrap items-center gap-4 bg-mist-700 h-auto min-h-12 px-6 py-2 rounded">
       <span class="text-white font-semibold text-sm">Sort By:</span>
       <div class="flex gap-3">
         <label

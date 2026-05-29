@@ -25,24 +25,23 @@ const handleSubmit = () => {
 </script>
 
 <template>
-  <div class="flex gap-50">
-    <div class="flex-1">
-      <TaskSort v-model="sortBy" />
-    </div>
-    <div class="flex-1">
+  <div
+    class="flex flex-col xl:flex-row gap-4 mb-4 xl:gap-8 items-start xl:items-center">
+    <div class="w-full xl:flex-1">
       <form
         @submit.prevent="handleSubmit"
-        class="bg-mist-900 p-4 flex rounded-xl gap-4 items-center">
+        class="bg-mist-900 px-4 pt-4 flex flex-wrap lg:flex-nowrap rounded-xl gap-3 items-center">
         <input
           v-model="taskName"
           type="text"
-          class="flex-1 min-w-50 h-12 px-4 text-[16px] text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded"
+          class="flex-1 min-w-33 h-12 px-4 text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded"
           placeholder="Title" />
         <input
           v-model="taskDueDate"
           type="date"
-          class="w-44 h-12 px-4 text-[16px] text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded" />
-        <div class="flex items-center gap-4 bg-mist-700 h-12 px-4 rounded">
+          class="w-auto sm:w-44 h-12 px-4 text-white placeholder:text-white font-semibold placeholder:font-semibold bg-mist-700 rounded" />
+        <div
+          class="flex w-auto items-center justify-between sm:justify-start gap-4 bg-mist-700 h-12 px-4 rounded">
           <span class="text-white font-semibold text-sm">Priority:</span>
           <div class="flex gap-3">
             <label
@@ -61,10 +60,13 @@ const handleSubmit = () => {
         </div>
         <button
           type="submit"
-          class="h-12 px-4 text-[16px] bg-mist-700 text-white font-bold hover:bg-mist-500 rounded">
+          class="h-12 px-4 bg-mist-700 text-white font-bold hover:bg-mist-500 rounded">
           Add
         </button>
       </form>
+    </div>
+    <div class="xl:w-auto px-4 pt-4">
+      <TaskSort v-model="sortBy" />
     </div>
   </div>
 </template>
