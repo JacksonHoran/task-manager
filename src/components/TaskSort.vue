@@ -5,9 +5,9 @@ const sortBy = defineModel({ default: "name" });
 <template>
   <div class="mt-4 ml-4 bg-mist-900">
     <div class="h-12 justify-items-center rounded bg-mist-700">
-      <form class="px-3 py-3 flex gap-6">
+      <form class="px-3 py-3 flex gap-8">
         <label
-          class="flex items-center gap-2 text-white font-semibold text-xl cursor-pointer select-none">
+          class="flex items-center gap-2 text-white font-semibold text-l cursor-pointer select-none">
           <input
             type="radio"
             name="sortBy"
@@ -18,7 +18,7 @@ const sortBy = defineModel({ default: "name" });
           <span>Name</span>
         </label>
         <label
-          class="flex items-center gap-2 text-white font-semibold text-xl cursor-pointer select-none">
+          class="flex items-center gap-2 text-white font-semibold text-l cursor-pointer select-none">
           <input
             type="radio"
             name="sortBy"
@@ -28,7 +28,7 @@ const sortBy = defineModel({ default: "name" });
           <span>Due Date</span>
         </label>
         <label
-          class="flex items-center gap-2 text-white font-semibold text-xl cursor-pointer select-none">
+          class="flex items-center gap-2 text-white font-semibold text-l cursor-pointer select-none">
           <input
             type="radio"
             name="sortBy"

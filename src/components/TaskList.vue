@@ -24,13 +24,19 @@ watch(
 );
 
 const sortedTasksArr = computed(() => {
+  const priorityWeight = {
+    High: 3,
+    Medium: 2,
+    Low: 1,
+  };
+
   return [...tasksArr.value].sort((a, b) => {
     if (currentSort.value === "name") {
       return a.name.localeCompare(b.name);
     } else if (currentSort.value === "dueDate") {
       return new Date(a.dueDate) - new Date(b.dueDate);
     } else if (currentSort.value === "priority") {
-      return b.priority - a.priority;
+      return (priorityWeight[b.priority] || 0) - (priorityWeight[a.priority] || 0);
     }
     return 0;
   });
