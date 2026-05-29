@@ -10,8 +10,10 @@ const currentSort = ref("name");
 
 onMounted(() => {
   const savedTasks = localStorage.getItem("tasks");
+  const savedSort = localStorage.getItem("sortBy");
   if (savedTasks) {
     tasksArr.value = JSON.parse(savedTasks);
+    currentSort.value = savedSort || "name";
   }
 });
 
@@ -22,6 +24,12 @@ watch(
   },
   { deep: true },
 );
+
+watch(
+    currentSort,
+    (newSort) => {
+  localStorage.setItem("sortBy", newSort);
+});
 
 const sortedTasksArr = computed(() => {
   const priorityWeight = {
