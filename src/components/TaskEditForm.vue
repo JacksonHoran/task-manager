@@ -34,7 +34,7 @@ const handleCancel = () => {
 <template>
   <form
     @submit.prevent="handleSave"
-    class="bg-mist-700 px-5 py-5 flex rounded items-center gap-3">
+    class="bg-mist-700 px-5 py-4 flex rounded items-center gap-3">
     <input
       v-model="draftTaskName"
       type="text"
