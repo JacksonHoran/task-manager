@@ -1,43 +1,31 @@
 <script setup>
 const sortBy = defineModel({ default: "name" });
+
+const sortOptions = [
+  { label: "Name", value: "name" },
+  { label: "Due Date", value: "dueDate" },
+  { label: "Priority", value: "priority" },
+];
 </script>
 
 <template>
   <div class="mt-4 ml-4 bg-mist-900">
-    <div class="h-12 justify-items-center rounded bg-mist-700">
-      <form class="px-3 py-3 flex gap-8">
+    <div class="flex items-center gap-4 bg-mist-700 h-12 px-12 rounded">
+      <span class="text-white font-semibold text-sm">Sort By:</span>
+      <div class="flex gap-3">
         <label
-          class="flex items-center gap-2 text-white font-semibold text-l cursor-pointer select-none">
+          v-for="option in sortOptions"
+          :key="option.value"
+          class="flex items-center gap-2 text-white font-semibold cursor-pointer select-none">
           <input
             type="radio"
             name="sortBy"
-            value="name"
+            :value="option.value"
             v-model="sortBy"
-            checked
-            class="appearance-none w-5 h-5 rounded-full bg-white/10 checked:bg-[radial-gradient(var(--color-mist-900)_35%,var(--color-mist-400)_40%)] transition-all duration-150" />
-          <span>Name</span>
+            class="appearance-none w-4 h-4 rounded-full bg-white/10 checked:bg-[radial-gradient(var(--color-mist-900)_35%,var(--color-mist-400)_40%)] transition-all duration-150" />
+          <span class="text-sm">{{ option.label }}</span>
         </label>
-        <label
-          class="flex items-center gap-2 text-white font-semibold text-l cursor-pointer select-none">
-          <input
-            type="radio"
-            name="sortBy"
-            value="dueDate"
-            v-model="sortBy"
-            class="appearance-none w-5 h-5 rounded-full bg-white/10 checked:bg-[radial-gradient(var(--color-mist-900)_35%,var(--color-mist-400)_40%)] transition-all duration-150" />
-          <span>Due Date</span>
-        </label>
-        <label
-          class="flex items-center gap-2 text-white font-semibold text-l cursor-pointer select-none">
-          <input
-            type="radio"
-            name="sortBy"
-            value="priority"
-            v-model="sortBy"
-            class="appearance-none w-5 h-5 rounded-full bg-white/10 checked:bg-[radial-gradient(var(--color-mist-900)_35%,var(--color-mist-400)_40%)] transition-all duration-150" />
-          <span>Priority</span>
-        </label>
-      </form>
+      </div>
     </div>
   </div>
 </template>
