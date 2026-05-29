@@ -45,7 +45,7 @@ const updateTask = (id, newName, newDueDate, newPriority) => {
 };
 
 const removeTask = (id) => {
-  tasksArr.value = tasksArr.value.filter((t) => t.id === id);
+  tasksArr.value = tasksArr.value.filter((t) => t.id !== id);
 };
 
 const startEdit = (id) => {
