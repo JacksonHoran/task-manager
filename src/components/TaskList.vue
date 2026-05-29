@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, computed } from "vue";
 import TaskForm from "./TaskForm.vue";
 import TaskItem from "./TaskItem.vue";
 import TaskEditForm from "./TaskEditForm.vue";
@@ -22,6 +22,19 @@ watch(
   },
   { deep: true },
 );
+
+const sortedTasksArr = computed(() => {
+  return [...tasksArr.value].sort((a, b) => {
+    if (currentSort.value === "name") {
+      return a.name.localeCompare(b.name);
+    } else if (currentSort.value === "dueDate") {
+      return new Date(a.dueDate) - new Date(b.dueDate);
+    } else if (currentSort.value === "priority") {
+      return b.priority - a.priority;
+    }
+    return 0;
+  });
+});
 
 const addNewTask = (taskData) => {
   tasksArr.value.push({
@@ -60,11 +73,9 @@ const markTaskComplete = (id) => {
 
 <template>
   <div>
-    <TaskForm
-      v-model:sortBy="currentSort"
-      @task-added="addNewTask" />
+    <TaskForm v-model:sortBy="currentSort" @task-added="addNewTask" />
     <div v-if="tasksArr.length > 0" class="mt-1 mx-4 grid gap-3">
-      <template v-for="task in tasksArr" :key="task.id">
+      <template v-for="task in sortedTasksArr" :key="task.id">
         <TaskEditForm
           v-if="currentTask && currentTask.id === task.id"
           :task="currentTask"
