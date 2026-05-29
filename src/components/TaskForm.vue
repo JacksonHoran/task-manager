@@ -45,7 +45,10 @@ const handleSubmit = () => {
         <div class="flex items-center gap-4 bg-mist-700 h-12 px-4 rounded">
           <span class="text-white font-semibold text-sm">Priority:</span>
           <div class="flex gap-3">
-            <label v-for="p in ['Low', 'Medium', 'High']" :key="p" class="flex items-center gap-2 text-white font-semibold cursor-pointer select-none">
+            <label
+              v-for="p in ['Low', 'Medium', 'High']"
+              :key="p"
+              class="flex items-center gap-2 text-white font-semibold cursor-pointer select-none">
               <input
                 type="radio"
                 name="priority"

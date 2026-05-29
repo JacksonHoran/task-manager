@@ -47,7 +47,10 @@ const handleCancel = () => {
     <div class="flex items-center gap-3 bg-mist-900 h-10 px-3 rounded">
       <span class="text-white font-semibold text-sm">Priority:</span>
       <div class="flex gap-2">
-        <label v-for="p in ['Low', 'Medium', 'High']" :key="p" class="flex items-center gap-1.5 text-white font-semibold cursor-pointer select-none">
+        <label
+          v-for="p in ['Low', 'Medium', 'High']"
+          :key="p"
+          class="flex items-center gap-1.5 text-white font-semibold cursor-pointer select-none">
           <input
             type="radio"
             :name="'edit-priority-' + task.id"

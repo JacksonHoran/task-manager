@@ -25,9 +25,7 @@ watch(
   { deep: true },
 );
 
-watch(
-    currentSort,
-    (newSort) => {
+watch(currentSort, (newSort) => {
   localStorage.setItem("sortBy", newSort);
 });
 
@@ -44,7 +42,9 @@ const sortedTasksArr = computed(() => {
     } else if (currentSort.value === "dueDate") {
       return new Date(a.dueDate) - new Date(b.dueDate);
     } else if (currentSort.value === "priority") {
-      return (priorityWeight[b.priority] || 0) - (priorityWeight[a.priority] || 0);
+      return (
+        (priorityWeight[b.priority] || 0) - (priorityWeight[a.priority] || 0)
+      );
     }
     return 0;
   });
