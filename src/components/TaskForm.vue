@@ -5,7 +5,6 @@ import TaskSort from "./TaskSort.vue";
 const taskName = ref("");
 const taskDueDate = ref("");
 const taskPriority = ref("Low");
-const sortBy = defineModel("sortBy");
 const emit = defineEmits(["task-added"]);
 
 const handleSubmit = () => {
@@ -64,9 +63,6 @@ const handleSubmit = () => {
           Add
         </button>
       </form>
-    </div>
-    <div class="xl:w-auto px-4 pt-4">
-      <TaskSort v-model="sortBy" />
     </div>
   </div>
 </template>

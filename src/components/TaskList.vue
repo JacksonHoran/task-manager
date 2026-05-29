@@ -3,6 +3,8 @@ import { ref, onMounted, watch, computed } from "vue";
 import TaskForm from "./TaskForm.vue";
 import TaskItem from "./TaskItem.vue";
 import TaskEditForm from "./TaskEditForm.vue";
+import TaskSort from "./TaskSort.vue";
+import TaskSummary from "./TaskSummary.vue";
 
 const tasksArr = ref([]);
 const currentTask = ref(null);
@@ -87,7 +89,22 @@ const markTaskComplete = (id) => {
 
 <template>
   <div>
-    <TaskForm v-model:sortBy="currentSort" @task-added="addNewTask" />
+    <div>
+      <TaskForm @task-added="addNewTask" />
+    </div>
+    <div class="flex flex-wrap justify-between gap-4 px-4 py-2">
+      <span>
+        <TaskSort v-model="currentSort" />
+      </span>
+      <span>
+        <TaskSummary
+          :tasks="tasksArr"
+          @clear-completed="tasksArr = tasksArr.filter(t => !t.isChecked)"
+          @clear-all="tasksArr = []"
+          @select-all="tasksArr.forEach(t => t.isChecked = true)"
+          @deselect-all="tasksArr.forEach(t => t.isChecked = false)" />
+      </span>
+    </div>
     <div v-if="tasksArr.length > 0" class="mt-1 mx-4 grid gap-3">
       <template v-for="task in sortedTasksArr" :key="task.id">
         <TaskEditForm
