@@ -6,6 +6,7 @@ import TaskEditForm from "./TaskEditForm.vue";
 
 const tasksArr = ref([]);
 const currentTask = ref(null);
+const currentSort = ref("name");
 
 onMounted(() => {
   const savedTasks = localStorage.getItem("tasks");
@@ -59,7 +60,9 @@ const markTaskComplete = (id) => {
 
 <template>
   <div>
-    <TaskForm @task-added="addNewTask" />
+    <TaskForm
+      v-model:sortBy="currentSort"
+      @task-added="addNewTask" />
     <div v-if="tasksArr.length > 0" class="mt-1 mx-4 grid gap-3">
       <template v-for="task in tasksArr" :key="task.id">
         <TaskEditForm

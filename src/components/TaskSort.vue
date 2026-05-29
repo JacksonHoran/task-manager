@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+const sortBy = defineModel({ default: "name" });
 </script>
 
 <template>
@@ -12,6 +12,7 @@ import { ref } from "vue";
             type="radio"
             name="sortBy"
             value="name"
+            v-model="sortBy"
             checked
             class="appearance-none w-5 h-5 rounded-full bg-white/10 checked:bg-[radial-gradient(var(--color-mist-900)_35%,var(--color-mist-400)_40%)] transition-all duration-150" />
           <span>Name</span>
@@ -22,6 +23,7 @@ import { ref } from "vue";
             type="radio"
             name="sortBy"
             value="dueDate"
+            v-model="sortBy"
             class="appearance-none w-5 h-5 rounded-full bg-white/10 checked:bg-[radial-gradient(var(--color-mist-900)_35%,var(--color-mist-400)_40%)] transition-all duration-150" />
           <span>Due Date</span>
         </label>
@@ -31,6 +33,7 @@ import { ref } from "vue";
             type="radio"
             name="sortBy"
             value="priority"
+            v-model="sortBy"
             class="appearance-none w-5 h-5 rounded-full bg-white/10 checked:bg-[radial-gradient(var(--color-mist-900)_35%,var(--color-mist-400)_40%)] transition-all duration-150" />
           <span>Priority</span>
         </label>
